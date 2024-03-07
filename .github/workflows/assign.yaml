@@ -1,0 +1,23 @@
+name: Assign Runners
+
+on:
+  repository_dispatch:
+    types: ["assign"]
+
+jobs:
+  assign_runners:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Make binary executable
+      run: chmod +x ./bin/assign
+
+    - name: Run binary
+      env:
+        DB_URL: ${{ secrets.DB_URL }}
+        DB_NAME: ${{ vars.DB_NAME }}
+        QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+      run: ./bin/assign
