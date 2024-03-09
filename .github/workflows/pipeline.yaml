@@ -12,7 +12,7 @@ jobs:
     with:
       run-name: "Static Application Security Testing for Application-One" 
   sast2:
-    needs: build
+    needs: sast
     uses: ./.github/workflows/assign.yaml
     with:
       run-name: "Static Application Security Testing for Application-One" 
