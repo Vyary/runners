@@ -22,5 +22,11 @@ jobs:
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: |
           output=$(./bin/queries)
-          echo "OUTPUT=$output" >> $GITHUB_ENV
-          echo "$output"
+          if [ -n "$output" ]; then
+            echo "CHANGED=true" >> $GITHUB_ENV
+            echo "$output"
+          fi
+
+      - name: Check output and run subsequent steps
+        if: ${{ env.CHANGED != '' }}
+        run: ./bin/assign
