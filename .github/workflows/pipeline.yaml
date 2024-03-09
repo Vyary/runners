@@ -10,12 +10,10 @@ jobs:
     needs: build
     uses: ./.github/workflows/assign.yaml
     with:
-      workflow: "Assign Runners"
-      inputs:
-        run-name: "Assign Runners"
-        DB_URL: ${{ secrets.DB_URL }}
-        DB_NAME: ${{ vars.DB_NAME }}
-        QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+      run-name: "Assign Runners"
+      DB_URL: ${{ secrets.DB_URL }}
+      DB_NAME: ${{ vars.DB_NAME }}
+      QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
   sast2:
     needs: sast
     uses: ./.github/workflows/queries.yaml
