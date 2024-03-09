@@ -22,4 +22,4 @@ jobs:
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: |
           output=$(./bin/queries)
-          echo "::set-output name=output::$output"
+          echo "OUTPUT=$output" >> $GITHUB_ENV
