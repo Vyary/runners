@@ -9,15 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Make binary executable
-      run: chmod +x ./bin/queries
+      - name: Make binary executable
+        run: chmod +x ./bin/queries
 
-    - name: Run binary
-      env:
-        DB_URL: ${{ secrets.DB_URL }}
-        DB_NAME: ${{ vars.DB_NAME }}
-        QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-      run: ./bin/queries
+      - name: Run binary
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_NAME: ${{ vars.DB_NAME }}
+          QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+        run: |
+          output=$(./bin/queries)
+          echo "::set-output name=output::$output"
