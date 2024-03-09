@@ -4,6 +4,12 @@ on:
   repository_dispatch:
     types: ["assign"]
   workflow_call:
+    inputs:
+      run-name:
+        required: false
+        description: "The name shown when executed"
+        default: "Running SAST 🚀"
+        type: string
 
 jobs:
   assign_runners:

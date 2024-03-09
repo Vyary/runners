@@ -3,6 +3,13 @@ name: Create Queries
 on:
   repository_dispatch:
     types: ["queries"]
+  workflow_call:
+    inputs:
+      run-name:
+        required: false
+        description: "The name shown when executed"
+        default: "Running SAST 🚀"
+        type: string
 
 jobs:
   create-queries:
@@ -20,19 +27,4 @@ jobs:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-        run: |
-          output=$(./bin/queries)
-          if [ -n "$output" ]; then
-            echo "CHANGED=true" >> $GITHUB_ENV
-            echo "$output"
-          fi
-
-      # - name: Check output and run subsequent steps
-      #   if: ${{ env.CHANGED != '' }}
-      #   env:
-      #     DB_URL: ${{ secrets.DB_URL }}
-      #     DB_NAME: ${{ vars.DB_NAME }}
-      #     QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-      #   run: ./bin/assign
-  second_workflow:
-  uses: ./.github/workflows/assign.yaml
+        run: ./bin/queries
