@@ -11,9 +11,9 @@ jobs:
     uses: ./.github/workflows/assign.yaml
     with:
       run-name: "Assign Runners"
-      DB_URL: "${{ secrets.DB_URL }}"
-      DB_NAME: "${{ vars.DB_NAME }}"
-      QUERY_DB_NAME: "${{ vars.QUERY_DB_NAME }}"
+      DB_URL: "test.com"
+      DB_NAME: "test"
+      QUERY_DB_NAME: "test 2"
   sast2:
     needs: sast
     uses: ./.github/workflows/queries.yaml
