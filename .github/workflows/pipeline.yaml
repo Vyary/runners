@@ -8,11 +8,12 @@ jobs:
       - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
   sast:
     needs: build
-    env:
+    uses: ./.github/workflows/assign.yaml
+    secrets:
       DB_URL: ${{ secrets.DB_URL }}
+    vars:
       DB_NAME: ${{ vars.DB_NAME }}
       QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-    uses: ./.github/workflows/assign.yaml
 
   sast2:
     needs: sast
