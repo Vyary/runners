@@ -2,10 +2,11 @@ name: Application One
 run-name: SDLC for Application One 🚀
 on: [push]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
+
   sast:
     needs: build
     uses: ./.github/workflows/assign.yaml
@@ -14,5 +15,4 @@ jobs:
   sast2:
     needs: sast
     uses: ./.github/workflows/queries.yaml
-    with:
-      run-name: "Static Application Security Testing for Application-One"
+    secrets: inherit 
