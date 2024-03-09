@@ -34,5 +34,5 @@ jobs:
       #     DB_NAME: ${{ vars.DB_NAME }}
       #     QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
       #   run: ./bin/assign
-    second_workflow:
-    uses: ./.github/workflows/assign.yaml
+  second_workflow:
+  uses: ./.github/workflows/assign.yaml
