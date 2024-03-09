@@ -27,10 +27,12 @@ jobs:
             echo "$output"
           fi
 
-      - name: Check output and run subsequent steps
-        if: ${{ env.CHANGED != '' }}
-        env:
-          DB_URL: ${{ secrets.DB_URL }}
-          DB_NAME: ${{ vars.DB_NAME }}
-          QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-        run: ./bin/assign
+      # - name: Check output and run subsequent steps
+      #   if: ${{ env.CHANGED != '' }}
+      #   env:
+      #     DB_URL: ${{ secrets.DB_URL }}
+      #     DB_NAME: ${{ vars.DB_NAME }}
+      #     QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+      #   run: ./bin/assign
+    second_workflow:
+    uses: ./.github/workflows/assign.yaml
