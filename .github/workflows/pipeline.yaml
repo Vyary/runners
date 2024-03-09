@@ -8,15 +8,16 @@ jobs:
       - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
   sast:
     needs: build
-    uses: ./.github/workflows/queries.yaml
+    uses: ./.github/workflows/assign.yaml
     with:
       workflow: "Assign Runners"
       inputs:
+        run-name: "Assign Runners"
         DB_URL: ${{ secrets.DB_URL }}
         DB_NAME: ${{ vars.DB_NAME }}
         QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
   sast2:
     needs: sast
-    uses: ./.github/workflows/assign.yaml
+    uses: ./.github/workflows/queries.yaml
     with:
       run-name: "Static Application Security Testing for Application-One"
