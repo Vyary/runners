@@ -25,6 +25,7 @@ jobs:
         run: ./bin/assign
 
   create:
+    needs: assign
     runs-on: ubuntu-latest
 
     steps:
