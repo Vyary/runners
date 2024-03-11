@@ -13,7 +13,7 @@ on:
 jobs:
   create:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.run == true }}
+    if: ${{ inputs.run == true }}
 
     steps:
       - name: Checkout repository
@@ -28,3 +28,4 @@ jobs:
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/queries
+
