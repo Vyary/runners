@@ -1,14 +1,18 @@
 name: Create Queries
-run-name: Create Queries
-
 on:
   repository_dispatch:
     types: ["queries"]
   workflow_call:
+    inputs:
+      run:
+        description: "Whether to run the job or not"
+        required: false
+        default: true
 
 jobs:
   create:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run == 'true' }}
 
     steps:
       - name: Checkout repository

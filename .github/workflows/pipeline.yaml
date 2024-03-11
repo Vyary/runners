@@ -11,6 +11,8 @@ jobs:
   queries:
     uses: ./.github/workflows/queries.yaml
     secrets: inherit
+    with:
+      run: false
 
   runners:
     needs: queries
