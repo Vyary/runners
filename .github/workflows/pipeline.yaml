@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/assign.yaml
     secrets: inherit
 
-  runners:
+  runners2:
     needs: queries 
     uses: ./.github/workflows/assign.yaml
     secrets: inherit
