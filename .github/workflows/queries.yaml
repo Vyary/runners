@@ -8,11 +8,12 @@ on:
         description: "Whether to run the job or not"
         required: false
         default: true
+        type: boolean
 
 jobs:
   create:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.run == 'true' }}
+    if: ${{ github.event.inputs.run == true }}
 
     steps:
       - name: Checkout repository
