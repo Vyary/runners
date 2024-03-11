@@ -6,11 +6,14 @@ on:
 
 jobs:
   queries:
-    needs: build
-    uses: ./.github/workflows/queries.yaml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run queries job
+        uses: ./.github/workflows/queries.yaml
 
   runners:
-    needs: queries 
-    uses: ./.github/workflows/assign.yaml
-    secrets: inherit
+    needs: queries
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run runners job
+        uses: ./.github/workflows/assign.yaml
