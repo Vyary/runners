@@ -10,6 +10,8 @@ on:
 jobs:
   queries:
     uses: ./.github/workflows/queries.yaml
+    with:
+      run: false
     secrets: inherit
 
   runners:
