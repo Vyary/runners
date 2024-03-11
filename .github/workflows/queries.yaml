@@ -1,4 +1,5 @@
 name: Create Queries
+run-name: Create Queries
 
 on:
   repository_dispatch:
