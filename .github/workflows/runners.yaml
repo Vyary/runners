@@ -5,10 +5,17 @@ on:
   repository_dispatch:
     types: ["assign"]
   workflow_call:
+    inputs:
+      run:
+        description: "Whether to run the job or not"
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   assign:
     runs-on: ubuntu-latest
+    if: ${{ inputs.run == true }}
 
     steps:
       - name: Checkout repository

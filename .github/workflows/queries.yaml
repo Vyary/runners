@@ -1,4 +1,6 @@
 name: Create Queries
+run-name: Create Queries
+
 on:
   repository_dispatch:
     types: ["queries"]
@@ -28,4 +30,3 @@ jobs:
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/queries
-
