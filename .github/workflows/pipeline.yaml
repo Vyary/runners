@@ -8,6 +8,8 @@ jobs:
   queries:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Run queries job
         uses: ./.github/workflows/queries.yaml
 
@@ -15,5 +17,7 @@ jobs:
     needs: queries
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Run runners job
         uses: ./.github/workflows/assign.yaml
