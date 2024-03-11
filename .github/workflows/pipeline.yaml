@@ -7,9 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
+      - uses: actions/checkout@v2
+      - name: Run composite action
         uses: ./.github/workflows/queries.yaml
 
   queries:
@@ -18,6 +18,6 @@ jobs:
     secrets: inherit
 
   assign:
-    needs: queries 
+    needs: queries
     uses: ./.github/workflows/assign.yaml
     secrets: inherit
