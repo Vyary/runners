@@ -6,7 +6,7 @@ on:
   workflow_call:
 
 jobs:
-  assign_runners:
+  assign:
     runs-on: ubuntu-latest
 
     steps:
