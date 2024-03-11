@@ -1,5 +1,4 @@
-name: Application One
-run-name: SDLC for Application One 🚀
+name: Create Chain
 
 on:
   repository_dispatch:
@@ -9,8 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run composite action
+      - name: Run Queries
         uses: ./.github/workflows/queries.yaml
 
   queries:
