@@ -1,23 +1,21 @@
-name: Create Chain
+name: Creation Chain
 
 on:
   repository_dispatch:
     types: ["pipeline"]
 
 jobs:
+  # initialize:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: echo "Triggered by ${{ github.actor }} with ${{ github.event_name }} event, status is ${{ job.status }}."
+
   queries:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Run queries job
-        uses: ./.github/workflows/queries.yaml
+    # needs: build
+    uses: ./.github/workflows/queries.yaml
+    secrets: inherit
 
   runners:
     needs: queries
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Run runners job
-        uses: ./.github/workflows/assign.yaml
+    uses: ./.github/workflows/assign.yaml
+    secrets: inherit
