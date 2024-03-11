@@ -1,5 +1,5 @@
 name: Assign Runners
-run-name: Assign Runners 
+run-name: Assign Runners
 
 on:
   repository_dispatch:
@@ -23,3 +23,10 @@ jobs:
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/assign
+
+  create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say hi
+        run: echo "Hello, world!"

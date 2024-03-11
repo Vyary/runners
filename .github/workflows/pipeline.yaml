@@ -4,6 +4,8 @@ run-name: Creation Chain
 on:
   repository_dispatch:
     types: ["pipeline"]
+  schedule:
+    - cron: "0 12 * * *"
 
 jobs:
   queries:
@@ -12,15 +14,5 @@ jobs:
 
   runners:
     needs: queries
-    uses: ./.github/workflows/assign.yaml
-    secrets: inherit
-
-  runners2:
-    needs: queries
-    uses: ./.github/workflows/assign.yaml
-    secrets: inherit
-
-  run3:
-    needs: runners2
-    uses: ./.github/workflows/assign.yaml
+    uses: ./.github/workflows/runners.yaml
     secrets: inherit
