@@ -48,3 +48,19 @@ jobs:
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/runners
+
+      - name: Add runners
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          # Add credentials
+          git config --global user.name "${{ secrets.GH_USERNAME }}"
+          git config --global user.email "${{ secrets.GH_EMAIL }}"
+
+          # Clone the repository
+          git clone https://github.com/Vyary/runners.git
+
+          # Commit and push changes
+          git add .
+          git commit -m "Updated build"
+          git push "https://${GH_TOKEN}@github.com/Vyary/runners.git" HEAD:main
