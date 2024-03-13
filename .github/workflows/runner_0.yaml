@@ -1,7 +1,7 @@
 name: runner_0
 "on":
     repository_dispatch:
-        types: [run]
+        types: [run0]
 jobs:
     run_binary:
         runs-on: ubuntu-latest
