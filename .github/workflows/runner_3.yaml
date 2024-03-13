@@ -1,0 +1,14 @@
+name: runner_3
+"on":
+    repository_dispatch:
+        types: [run]
+jobs:
+    run_binary:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Make binary executable
+              run: chmod +x ./bin/update
+            - name: Run binary
+              run: ./bin/update --runner-id=3
