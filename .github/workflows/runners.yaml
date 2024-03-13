@@ -49,7 +49,7 @@ jobs:
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/runners
 
-      - uses: actions/checkout@v4
+      - name: Add runners
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
