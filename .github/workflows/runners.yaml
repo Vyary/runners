@@ -50,9 +50,9 @@ jobs:
         run: ./bin/runners
 
       - name: Add runners
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+      - run: |
+         git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "create runners"
+          git commit -m "add runners"
           git push
