@@ -8,7 +8,13 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              env: {}
             - name: Make binary executable
               run: chmod +x ./bin/update
+              env: {}
             - name: Run binary
-              run: ./bin/update --runner-id=4
+              run: ./bin/update --runner-id=0
+              env:
+                DB_NAME: ${{ vars.DB_NAME }}
+                DB_URL: ${{ secrets.DB_URL }}
+                QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
