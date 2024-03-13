@@ -49,9 +49,9 @@ jobs:
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/runners
 
-      - name: Add runners
-        run: |
-         git config --local user.email "actions@github.com"
+      - uses: actions/checkout@v4
+      - run: |
+          git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "add runners"
