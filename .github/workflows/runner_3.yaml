@@ -13,7 +13,7 @@ jobs:
               run: chmod +x ./bin/update
               env: {}
             - name: Run binary
-              run: ./bin/update --runner-id=0
+              run: ./bin/update --runner-id=3
               env:
                 DB_NAME: ${{ vars.DB_NAME }}
                 DB_URL: ${{ secrets.DB_URL }}
