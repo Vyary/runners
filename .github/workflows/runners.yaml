@@ -49,15 +49,10 @@ jobs:
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
         run: ./bin/runners
 
-      - name: Add runners
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          # Add credentials
-          git config --global user.name "${{ secrets.GH_USERNAME }}"
-          git config --global user.email "${{ secrets.GH_EMAIL }}"
-
-          # Commit and push changes
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add .
-          git commit -m "Updated build"
+          git commit -m "create runners"
           git push
