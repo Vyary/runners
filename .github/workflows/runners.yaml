@@ -36,5 +36,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hi
-        run: echo "Hello, world!"
+      - name: Make binary executable
+        run: chmod +x ./bin/runners
+
+      - name: Run binary
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_NAME: ${{ vars.DB_NAME }}
+          QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+        run: ./bin/runners
