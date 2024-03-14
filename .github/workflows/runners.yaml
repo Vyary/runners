@@ -65,7 +65,7 @@ jobs:
           fi
 
       - name: Commit and Push changes
-        if: ${{ env.CHANGED != 'true' }}
+        if: ${{ env.CHANGED == 'true' }}
         run: |
           git add .
           git commit -m "add runners"
