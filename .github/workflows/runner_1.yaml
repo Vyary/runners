@@ -1,4 +1,5 @@
 name: runner_1
+run-name: Runner 1
 "on":
     repository_dispatch:
         types: [run0]
