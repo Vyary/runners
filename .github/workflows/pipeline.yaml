@@ -4,8 +4,8 @@ run-name: Creation Chain
 on:
   repository_dispatch:
     types: ["pipeline"]
-  schedule:
-    - cron: "0 12 * * *"
+  # schedule:
+    # - cron: "0 12 * * *"
 
 jobs:
   queries:
