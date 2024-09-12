@@ -22,11 +22,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make binary executable
-        run: chmod +x ./bin/queries
+        run: chmod +x ./bin/profit
 
       - name: Run binary
         env:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-        run: ./bin/queries
+        run: ./bin/profit --create-queries

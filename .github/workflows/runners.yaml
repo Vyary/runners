@@ -22,14 +22,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make binary executable
-        run: chmod +x ./bin/assign
+        run: chmod +x ./bin/profit
 
       - name: Run binary
         env:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-        run: ./bin/assign
+        run: ./bin/profit --assign-runners
 
   create:
     needs: assign
@@ -42,14 +42,14 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Make binary executable
-        run: chmod +x ./bin/runners
+        run: chmod +x ./bin/profit
 
       - name: Run binary
         env:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ vars.DB_NAME }}
           QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
-        run: ./bin/runners
+        run: ./bin/profit --create-runners
 
       - name: Set up Git
         run: |
