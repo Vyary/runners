@@ -60,13 +60,15 @@ jobs:
         id: check_changes
         run: |
           if ! git diff --quiet; then
-            echo "CHANGED=true" >> $GITHUB_ENV
+            echo "CHANGED=true"
+            echo "::set-output name=changed::true"
           else
-            echo "CHANGED=false" >> $GITHUB_ENV
+            echo "CHANGED=false"
+            echo "::set-output name=changed::false"
           fi
 
       - name: Commit and Push changes
-        if: env.CHANGED == 'true'
+        if: steps.check_changes.outputs.changed == 'true'
         run: |
           git add .
           git commit -m "add runners"
