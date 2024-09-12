@@ -57,6 +57,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
       - name: Check for changes
+        id: check_changes
         run: |
           if ! git diff --quiet; then
             echo "CHANGED=true" >> $GITHUB_ENV
@@ -65,7 +66,7 @@ jobs:
           fi
 
       - name: Commit and Push changes
-        if: ${{ env.CHANGED == 'true' }}
+        if: env.CHANGED == 'true'
         run: |
           git add .
           git commit -m "add runners"
