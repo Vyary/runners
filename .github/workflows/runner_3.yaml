@@ -14,7 +14,7 @@ jobs:
               run: chmod +x ./bin/profit
               env: {}
             - name: Run binary
-              run: ./bin/profit --runner-id=3
+              run: ./bin/profit --update-prices --runner-id=3
               env:
                 DB_NAME: ${{ vars.DB_NAME }}
                 DB_URL: ${{ secrets.DB_URL }}
