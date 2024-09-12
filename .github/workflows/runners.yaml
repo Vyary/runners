@@ -56,19 +56,17 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions[bot]"
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          if ! git diff --quiet; then
-            echo "CHANGED=true"
-            echo "::set-output name=changed::true"
-          else
-            echo "CHANGED=false"
-            echo "::set-output name=changed::false"
-          fi
+      # - name: Check for changes
+      #   id: check_changes
+      #   run: |
+      #     if ! git diff --quiet; then
+      #       echo "CHANGED=true" >> $GITHUB_ENV
+      #     else
+      #       echo "CHANGED=false" >> $GITHUB_ENV
+      #     fi
 
       - name: Commit and Push changes
-        if: steps.check_changes.outputs.changed == 'true'
+        # if: env.CHANGED == 'true'
         run: |
           git add .
           git commit -m "add runners"
