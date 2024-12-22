@@ -16,5 +16,5 @@ jobs:
       - name: Run binary
         run: ./bin/profit --runner-id=3
         env:
-          DB_NAME: ${{ secrets.DB_URL }}
-          DB_URL: ${{ secrets.DB_AUTH_TOKEN }}
+          DB_URL: ${{ secrets.DB_URL }}
+          AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
