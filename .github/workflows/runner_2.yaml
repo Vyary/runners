@@ -1,5 +1,5 @@
-name: runner_2
-run-name: Runner 2
+name: runner_1
+run-name: Runner 1
 "on":
     repository_dispatch:
         types: [run0]
@@ -14,8 +14,7 @@ jobs:
               run: chmod +x ./bin/profit
               env: {}
             - name: Run binary
-              run: ./bin/profit --update-prices --runner-id=2
+              run: ./bin/profit --runner-id=2
               env:
-                DB_NAME: ${{ vars.DB_NAME }}
-                DB_URL: ${{ secrets.DB_URL }}
-                QUERY_DB_NAME: ${{ vars.QUERY_DB_NAME }}
+                DB_NAME: ${{ secrets.DB_URL }}
+                DB_URL: ${{ secrets.DB_AUTH_TOKEN }}
