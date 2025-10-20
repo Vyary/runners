@@ -1,0 +1,16 @@
+name: Collect Item Price
+on:
+  repository_dispatch:
+    types: [price]
+
+jobs:
+  price:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Run binary
+        run: ./bin/price
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
