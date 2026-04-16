@@ -16,3 +16,16 @@ jobs:
           DB_URL: ${{ secrets.DB_URL }}
           DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
           POE_AUTH_TOKEN: ${{ secrets.POE_AUTH_TOKEN }}
+
+  fuse:
+    runs-on: ubuntu-latest
+    needs: exchange
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Run binary
+        run: ./bin/fuse
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
